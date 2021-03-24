@@ -170,12 +170,47 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="DataRepository\ApplicationDbContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Migrations\202103231525138_initial_Db.cs" />
+    <Compile Include="Migrations\202103231525138_initial_Db.Designer.cs">
+      <DependentUpon>202103231525138_initial_Db.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103240834290_createbasicTb.cs" />
+    <Compile Include="Migrations\202103240834290_createbasicTb.Designer.cs">
+      <DependentUpon>202103240834290_createbasicTb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103240914169_createDriverTbandattr.cs" />
+    <Compile Include="Migrations\202103240914169_createDriverTbandattr.Designer.cs">
+      <DependentUpon>202103240914169_createDriverTbandattr.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103241034585_createFDTb.cs" />
+    <Compile Include="Migrations\202103241034585_createFDTb.Designer.cs">
+      <DependentUpon>202103241034585_createFDTb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103241058383_createResTb.cs" />
+    <Compile Include="Migrations\202103241058383_createResTb.Designer.cs">
+      <DependentUpon>202103241058383_createResTb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Appointment.cs" />
+    <Compile Include="Models\Receiver.cs" />
+    <Compile Include="Models\Country.cs" />
+    <Compile Include="Models\Driver.cs" />
+    <Compile Include="Models\DriverVehicleRecord.cs" />
+    <Compile Include="Models\FuelRecord.cs" />
+    <Compile Include="Models\Manufacture.cs" />
+    <Compile Include="Models\Owner.cs" />
+    <Compile Include="Models\ServiceCenter.cs" />
+    <Compile Include="Models\ServiceRecord.cs" />
+    <Compile Include="Models\Vehicle.cs" />
+    <Compile Include="Models\VehicleAssignedRecord.cs" />
+    <Compile Include="Models\VType.cs" />
+    <Compile Include="ViewModel\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="ViewModel\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -251,6 +286,23 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202103231525138_initial_Db.resx">
+      <DependentUpon>202103231525138_initial_Db.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103240834290_createbasicTb.resx">
+      <DependentUpon>202103240834290_createbasicTb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103240914169_createDriverTbandattr.resx">
+      <DependentUpon>202103240914169_createDriverTbandattr.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103241034585_createFDTb.resx">
+      <DependentUpon>202103241034585_createFDTb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103241058383_createResTb.resx">
+      <DependentUpon>202103241058383_createResTb.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
