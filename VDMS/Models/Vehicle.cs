@@ -31,11 +31,13 @@ namespace VDMS.Models
         public Manufacture Manufacture { get; set; }
         public VType Type { get; set; }
 
+        public bool Status { get; set; }
+
         public ICollection<ServiceRecord> serviceRecords { get; set; }
         public  ICollection<FuelRecord> FuelRecords { get; set; }
         public  ICollection<DriverVehicleRecord> DriverVehicleRecords { get; set; }
-
         public  ICollection<VehicleAssignedRecord> VehicleAssignedRecords { get; set; }
+        public ICollection<Insurance> Insurances { get; set; }
         
     }
 }

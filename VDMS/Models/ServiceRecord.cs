@@ -21,6 +21,7 @@ namespace VDMS.Models
         public int Milage { get; set; }
         public int VehicleId { get; set; }
         public Vehicle Vehicle { get; set; }
+        public bool Status { get; set; }
         public int ServiceCenterId { get; set; }
         public ServiceCenter ServiceCenter { get; set; }
     }

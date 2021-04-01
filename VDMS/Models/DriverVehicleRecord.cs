@@ -14,5 +14,7 @@ namespace VDMS.Models
         public int DriverId { get; set; }
         public Vehicle Vehicle { get; set; }
         public Driver Driver { get; set; }
+        public bool Status { get; set; }
+
     }
 }

@@ -13,5 +13,6 @@ namespace VDMS.Models
         public int ReceiverId { get; set; }
         public Receiver Receiver { get; set; }
         public Vehicle Vehicle { get; set; }
+        public bool Status { get; set; }
     }
 }

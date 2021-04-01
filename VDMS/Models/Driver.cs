@@ -15,6 +15,8 @@ namespace VDMS.Models
         public string NIC { get; set; }
         public int AppointmentId { get; set; }
         public Appointment Appointment { get; set; }
+        public bool Status { get; set; }
+
 
         public ICollection<DriverVehicleRecord> DriverVehicleRecords { get; set; }
     }

@@ -16,6 +16,9 @@ namespace VDMS.DataRepository
         public DbSet<Driver> Drivers { get; set; }
         public DbSet<DriverVehicleRecord> DriverVehicleRecords { get; set; }
         public DbSet<FuelRecord> FuelRecords { get; set; }
+        public DbSet<IncuranceCompany> IncuranceCompanies { get; set; }
+        public DbSet<Insurance> Insurances { get; set; }
+        public DbSet<InsuranceClaim> InsuranceClaims { get; set; }
         public DbSet<Manufacture> Manufactures { get; set; }
         public DbSet<Owner> Owners { get; set; }
         public DbSet<Receiver> Receivers { get; set; }
@@ -37,7 +40,6 @@ namespace VDMS.DataRepository
         {
             return new ApplicationDbContext();
         }
-
         
     }
 }

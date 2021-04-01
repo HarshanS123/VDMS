@@ -15,6 +15,7 @@ namespace VDMS.Models
         public double Qty { get; set; }
         public double UnitPrice { get; set; }
         public int VehicleId { get; set; }
+        public bool Status { get; set; }
 
         public Vehicle Vehicle { get; set; }
     }
