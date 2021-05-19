@@ -17,7 +17,6 @@ namespace VDMS.Models
         public Appointment Appointment { get; set; }
         public bool Status { get; set; }
 
-
         public ICollection<DriverVehicleRecord> DriverVehicleRecords { get; set; }
     }
 }

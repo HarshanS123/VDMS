@@ -4,91 +4,86 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <h5 class="card-header">Vehicles</h5>
+            <div class="card-body">
+                <table class="table" id="vdataTable">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.VehicleNo)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.TypeId)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.FuelType)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.CylinderCapacity)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ManufacturedYear)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ManufactureId)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.OwnerId)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.VehicleNo)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Type.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.FuelType.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CylinderCapacity)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ManufacturedYear)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Manufacture.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Owner.Name)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-warning" })
+                                    @Html.ActionLink("Details", "Edit", new { id = item.Id }, new { @class = "btn btn-info" })
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
+                                </td>
+                            </tr>
+                        }
+                    <tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.VehicleNo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TypeId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EngineNo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ChassiNo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Color)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SeatingCapacity)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DataOfFirstReg)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CylinderCapacity)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ManufacturedYear)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ManufactureId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.OwnerId)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.VehicleNo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TypeId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EngineNo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ChassiNo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Color)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SeatingCapacity)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DataOfFirstReg)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CylinderCapacity)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ManufacturedYear)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ManufactureId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.OwnerId)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $('#vdataTable').DataTable();
+        });
+    </script>
 }
 
-</table>
+
+
+

@@ -16,24 +16,29 @@ namespace VDMS.DataRepository
         private IManufacturesRepository _imanufactures;
         private IVTypes _ivtype;
         private IOwnerRepository _iowner;
+        private IFuel _fuel;
 
         public VehicalRepository()
         {           
             _imanufactures = new ManufacturesRepository();
             _ivtype = new VTypeRepository();
             _iowner = new OwnerRepository();
+            _fuel = new FuelRepository();
         }
 
-        bool IVehicaleRepository.Edit(int id, Vehicle vehicle)
+        bool IVehicaleRepository.Edit(VehicleViewModel vehicle)
         {
             bool returnval = false;
-            //var vehicleInDb = _dbcontext.Vehicles.SingleOrDefault(v => v.Id == id);
-            //if (vehicleInDb!=null)
-            //{
-            //    Mapper.Map(vehicle, vehicleInDb);
-            //    _dbcontext.SaveChanges();
-            //    return returnval = true;
-            //}
+            using (_dbcontext =  new ApplicationDbContext())
+            {
+                var vehicleInDb = _dbcontext.Vehicles.SingleOrDefault(v => v.Id == vehicle.Id);
+                if (vehicleInDb != null)
+                {
+                    Mapper.Map(vehicle, vehicleInDb);
+                    _dbcontext.SaveChanges();
+                    return returnval = true;
+                }
+            }
 
             return returnval;
         }
@@ -42,18 +47,32 @@ namespace VDMS.DataRepository
         {
             using (_dbcontext =  new ApplicationDbContext())
             {
-                var vehicles = _dbcontext.Vehicles.Include(v => v.Manufacture).Include(v => v.Owner).Include(v => v.Type).ToList().Select(Mapper.Map<Vehicle, VehicleViewModel>);
-                return vehicles;
+                var res =  _dbcontext.Vehicles.Include(v => v.Manufacture).Include(v => v.Owner).Include(v => v.Type).Include(v => v.FuelType).ToList().Select(Mapper.Map<Vehicle, VehicleViewModel>);
+                return res;
             }
                 
         }
 
-        Vehicle IVehicaleRepository.GetVehicle(int id)
+        VehicleViewModel IVehicaleRepository.GetVehicle(int id)
         {
+            var Vehicale = new VehicleViewModel();
+
             using (_dbcontext = new ApplicationDbContext())
             {
-                return _dbcontext.Vehicles.SingleOrDefault(v => v.Id == id);
+                var ve = _dbcontext.Vehicles.SingleOrDefault(v => v.Id == id);
+                Vehicale= Mapper.Map<Vehicle, VehicleViewModel>(ve);                
             }
+            var vtypeList = _ivtype.GetAll();
+            var ownerList = _iowner.GetAll();
+            var manufactureList = _imanufactures.GetAll();
+            var fuel = _fuel.GetAll();
+
+            Vehicale.Owners = ownerList;
+            Vehicale.Manufactures = manufactureList;
+            Vehicale.VTypes = vtypeList;
+            Vehicale.FuelTypes = fuel;
+
+            return Vehicale;
         }
 
         Vehicle IVehicaleRepository.Save(Vehicle vehicle)
@@ -94,20 +113,18 @@ namespace VDMS.DataRepository
 
         VehicleViewModel IVehicaleRepository.View() 
         {
-            using (_dbcontext = new ApplicationDbContext())
-            {
-                var Vehicale = new VehicleViewModel();               
-                var vtypeList = _ivtype.GetAll();
-                var ownerList = _iowner.GetAll();
-                var manufactureList = _imanufactures.GetAll();
+            var Vehicale = new VehicleViewModel();
+            var vtypeList = _ivtype.GetAll();
+            var ownerList = _iowner.GetAll();
+            var manufactureList = _imanufactures.GetAll();
+            var fuel = _fuel.GetAll();
 
-                Vehicale.Owners = ownerList;
-                Vehicale.Manufactures = manufactureList;
-                Vehicale.VTypes = vtypeList;
+            Vehicale.Owners = ownerList;
+            Vehicale.Manufactures = manufactureList;
+            Vehicale.VTypes = vtypeList;
+            Vehicale.FuelTypes = fuel;
 
-                return Vehicale;
-            }
-                
+            return Vehicale;
 
         }
 

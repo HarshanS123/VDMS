@@ -27,6 +27,7 @@ namespace VDMS.DataRepository
         public DbSet<Vehicle> Vehicles { get; set; }
         public DbSet<VehicleAssignedRecord> VehicleAssignedRecords { get; set; }
         public DbSet<VType> VTypes { get; set; }
+        public DbSet<FuelType> FuelTypes { get; set; }
 
 
         public ApplicationDbContext()
@@ -40,6 +41,6 @@ namespace VDMS.DataRepository
         {
             return new ApplicationDbContext();
         }
-        
+
     }
 }

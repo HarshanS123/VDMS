@@ -11,7 +11,6 @@ namespace VDMS.Models
         public int Id { get; set; }
         [StringLength(15)]
         public string Name { get; set; }
-
-        public virtual ICollection<Vehicle> Vehicles { get; set; }
+       
     }
 }

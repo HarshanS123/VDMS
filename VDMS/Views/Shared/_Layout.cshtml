@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     @Styles.Render("~/Content/plugins/fontawesome-free/css/all.min.css")
     @Styles.Render("~/Content/dist/css/adminlte.min.css")
-    @Styles.Render("~/Content/dist/datePicker/bootstrap-datepicker-1.9.0-dist/css/bootstrap-datepicker3.min.css")
+    @Styles.Render("~/Content/Site.css")
+    @Styles.Render("~/Content/datatable.css")
 
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -102,7 +103,7 @@
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
-                        with font-awesome or any other icon font library -->
+    with font-awesome or any other icon font library -->
                         <li class="nav-item menu-open">
                             <a href="index.html" class="nav-link active">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -141,6 +142,31 @@
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-car"></i>
+                                <p>
+                                    Pool Management
+                                    <i class="fas fa-angle-left right"></i>
+
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="@Url.Action("AssigningtoDriver", "Assigning")" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Assing Vehical to Driver</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="@Url.Action("Index", "Vehicles")" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Show Pool</p>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-user"></i>
                                 <p>
                                     Driver Management
@@ -149,13 +175,13 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="pages/charts/chartjs.html" class="nav-link">
+                                    <a href="@Url.Action("Create","Driver")" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Add Driver Details</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="pages/charts/flot.html" class="nav-link">
+                                    <a href="@Url.Action("Index","Driver")" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Show Driver Details</p>
                                     </a>
@@ -173,29 +199,47 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="pages/charts/chartjs.html" class="nav-link">
+                                    <a href="@Url.Action("Create","VehicleType")" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Add Driver Details</p>
+                                        <p>Add Vehical Type</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="pages/charts/flot.html" class="nav-link">
+                                    <a href="@Url.Action("Create","Manufacture")" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Show Driver Details</p>
+                                        <p>Add Manufactuers</p>
                                     </a>
                                 </li>
                             </ul>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="pages/charts/chartjs.html" class="nav-link">
+                                    <a href="@Url.Action("Index","Manufacture")" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Add Driver Details</p>
+                                        <p>View Manufactuers</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="pages/charts/flot.html" class="nav-link">
+                                    <a href="@Url.Action("Create","Appointment")" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Show Driver Details</p>
+                                        <p>Manage Appoiment</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="@Url.Action("Index","Appointment")" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>View All Appoiment</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="@Url.Action("Create","Owner")" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Add Owners</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="@Url.Action("Index","Owner")" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>view Owners</p>
                                     </a>
                                 </li>
                             </ul>
@@ -259,13 +303,9 @@
     @Scripts.Render("~/Scripts/bootbox.min.js")
     @Scripts.Render("~/Content/dist/js/adminlte.js")
     @Scripts.Render("~/Content/dist/js/demo.js")
-    @Scripts.Render("~/Content/dist/datePicker/bootstrap-datepicker-1.9.0-dist/js/bootstrap-datepicker.min.js")
     @Scripts.Render("~/Content/dist/js/pages/dashboard.js")
+    <script src="//cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
     @RenderSection("scripts", required: false)
-    <script>
-    $(function () {
-        $("#datepicker").datepicker();
-    });
-    </script>
+
 </body>
 </html>

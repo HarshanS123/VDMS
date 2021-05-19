@@ -22,6 +22,12 @@ namespace VDMS.App_Start
             Mapper.CreateMap<VTypeViewModel, VType>();
             Mapper.CreateMap<Country, CountryViewModel>();
             Mapper.CreateMap<CountryViewModel, Country>();
+            Mapper.CreateMap<FuelType, FuelTypeViewModel>();
+            Mapper.CreateMap<FuelTypeViewModel, FuelType>();
+            Mapper.CreateMap<Appointment, AppointmentViewModel>();
+            Mapper.CreateMap<AppointmentViewModel, Appointment>();
+            Mapper.CreateMap<Driver, DriverViewModel>();
+            Mapper.CreateMap<DriverViewModel, Driver>();
         }
         
     }

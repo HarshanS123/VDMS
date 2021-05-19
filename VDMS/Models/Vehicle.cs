@@ -33,6 +33,10 @@ namespace VDMS.Models
 
         public bool Status { get; set; }
 
+        public int FuelTypeId { get; set; }
+        
+        public FuelType FuelType { get; set; }        
+
         public ICollection<ServiceRecord> serviceRecords { get; set; }
         public  ICollection<FuelRecord> FuelRecords { get; set; }
         public  ICollection<DriverVehicleRecord> DriverVehicleRecords { get; set; }

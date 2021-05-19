@@ -9,6 +9,6 @@ namespace VDMS.ViewModel
     {
         public int Id { get; set; }        
         public string Name { get; set; }
-        public virtual ICollection<VehicleViewModel> Vehicles { get; set; }
+        public virtual IEnumerable<VehicleViewModel> Vehicles { get; set; }
     }
 }

@@ -3,15 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using VDMS.DataRepository;
+using VDMS.ViewModel;
 
 namespace VDMS.Controllers
 {
     public class OwnerController : Controller
     {
+        private IOwnerRepository _ownerRep = new OwnerRepository();
         // GET: Owner
         public ActionResult Index()
         {
-            return View();
+            var owners =_ownerRep.GetAll();
+            return View(owners);
         }
 
         // GET: Owner/Details/5
@@ -28,11 +32,15 @@ namespace VDMS.Controllers
 
         // POST: Owner/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(OwenrViewModel owner)
         {
             try
             {
-                // TODO: Add insert logic here
+                if (ModelState.IsValid)
+                {
+                    _ownerRep.Save(owner);
+
+                }
 
                 return RedirectToAction("Index");
             }

@@ -32,6 +32,7 @@ namespace VDMS.ViewModel
         public int SeatingCapacity { get; set; }
 
         [Display(Name = "Data Of First Registration")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MMM/yyyy}")]
         public DateTime DataOfFirstReg { get; set; }
 
         [Display(Name = "Cylinder Capacity")]
@@ -39,11 +40,21 @@ namespace VDMS.ViewModel
 
         [Display(Name = "Manufactured Year")]
         public int ManufacturedYear { get; set; }
+
+        [Display(Name = "Manufacture")]
         public int ManufactureId { get; set; }
 
         [Display(Name = "Owner")]
-        public int OwnerId { get; set; }       
+        public int OwnerId { get; set; }
 
+        public Manufacture Manufacture { get; set; }
+        public Owner Owner { get; set; }
+        public VType Type { get; set; }
+
+        public int FuelTypeId { get; set; }
+
+        public FuelType FuelType { get; set; }
+        public IEnumerable<FuelTypeViewModel> FuelTypes { get; set; }
         public IEnumerable<OwenrViewModel> Owners { get; set; }
         public IEnumerable<ManufactureViewModel> Manufactures { get; set; }
         public virtual IEnumerable<VTypeViewModel> VTypes { get; set; }

@@ -184,20 +184,32 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AppointmentController.cs" />
+    <Compile Include="Controllers\AssigningController.cs" />
+    <Compile Include="Controllers\DriverController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ManufactureController.cs" />
     <Compile Include="Controllers\OwnerController.cs" />
     <Compile Include="Controllers\VehiclesController.cs" />
+    <Compile Include="Controllers\VehicleTypeController.cs" />
     <Compile Include="DataRepository\ApplicationDbContext.cs" />
-    <Compile Include="DataRepository\IManufacturesRepository.cs" />
-    <Compile Include="DataRepository\IOwnerRepository.cs" />
-    <Compile Include="DataRepository\IVehicaleRepository.cs" />
-    <Compile Include="DataRepository\IVTypes.cs" />
+    <Compile Include="DataRepository\AppointmentRepository.cs" />
+    <Compile Include="DataRepository\DriverRepository.cs" />
+    <Compile Include="DataRepository\FuelRepository.cs" />
+    <Compile Include="DataRepository\RecordRepository.cs" />
+    <Compile Include="Interface\IAssigning.cs" />
+    <Compile Include="Interface\IDriverRepository.cs" />
+    <Compile Include="Interface\IFuel.cs" />
+    <Compile Include="Interface\IManufacturesRepository.cs" />
+    <Compile Include="Interface\IOwnerRepository.cs" />
+    <Compile Include="Interface\IVehicaleRepository.cs" />
+    <Compile Include="Interface\IVTypes.cs" />
     <Compile Include="DataRepository\ManufacturesRepository.cs" />
     <Compile Include="DataRepository\OwnerRepository.cs" />
     <Compile Include="DataRepository\VehicalRepository.cs" />
     <Compile Include="DataRepository\VTypeRepository.cs" />
+    <Compile Include="Interface\IAppointment.cs" />
     <Compile Include="Migrations\202103300726165_testfinal01.cs" />
     <Compile Include="Migrations\202103300726165_testfinal01.Designer.cs">
       <DependentUpon>202103300726165_testfinal01.cs</DependentUpon>
@@ -206,7 +218,20 @@
     <Compile Include="Migrations\202104010751326_newclStatus.Designer.cs">
       <DependentUpon>202104010751326_newclStatus.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202104060635173_addfueltypetb.cs" />
+    <Compile Include="Migrations\202104060635173_addfueltypetb.Designer.cs">
+      <DependentUpon>202104060635173_addfueltypetb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104061953321_updatetb.cs" />
+    <Compile Include="Migrations\202104061953321_updatetb.Designer.cs">
+      <DependentUpon>202104061953321_updatetb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FuelType.cs" />
+    <Compile Include="ViewModel\AppointmentViewModel.cs" />
     <Compile Include="ViewModel\CountryViewModel.cs" />
+    <Compile Include="ViewModel\DriverVehicleRecordViewModel.cs" />
+    <Compile Include="ViewModel\DriverViewModel.cs" />
+    <Compile Include="ViewModel\FuelTypeViewModel.cs" />
     <Compile Include="ViewModel\OwenrViewModel.cs" />
     <Compile Include="ViewModel\ManufactureViewModel.cs" />
     <Compile Include="ViewModel\VehicleViewModel.cs" />
@@ -291,6 +316,7 @@
     <Content Include="Content\build\npm\Plugins.js" />
     <Content Include="Content\build\npm\Publish.js" />
     <Content Include="Content\build\npm\vnu-jar.js" />
+    <Content Include="Content\datatable.css" />
     <Content Include="Content\dist\css\adminlte.css" />
     <Content Include="Content\dist\css\adminlte.min.css" />
     <Content Include="Content\dist\css\alt\adminlte.components.css" />
@@ -303,99 +329,6 @@
     <Content Include="Content\dist\css\alt\adminlte.pages.min.css" />
     <Content Include="Content\dist\css\alt\adminlte.plugins.css" />
     <Content Include="Content\dist\css\alt\adminlte.plugins.min.css" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\css\bootstrap-datepicker.css" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\css\bootstrap-datepicker.min.css" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\css\bootstrap-datepicker.standalone.css" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\css\bootstrap-datepicker.standalone.min.css" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\css\bootstrap-datepicker3.css" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\css\bootstrap-datepicker3.min.css" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\css\bootstrap-datepicker3.standalone.css" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\css\bootstrap-datepicker3.standalone.min.css" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\js\bootstrap-datepicker.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\js\bootstrap-datepicker.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker-en-CA.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.ar-tn.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.ar.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.az.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.bg.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.bm.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.bn.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.br.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.bs.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.ca.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.cs.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.cy.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.da.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.de.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.el.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.en-AU.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.en-CA.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.en-GB.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.en-IE.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.en-NZ.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.en-ZA.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.eo.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.es.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.et.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.eu.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.fa.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.fi.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.fo.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.fr-CH.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.fr.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.gl.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.he.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.hi.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.hr.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.hu.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.hy.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.id.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.is.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.it-CH.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.it.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.ja.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.ka.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.kh.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.kk.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.km.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.ko.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.kr.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.lt.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.lv.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.me.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.mk.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.mn.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.ms.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.nl-BE.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.nl.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.no.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.oc.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.pl.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.pt-BR.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.pt.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.ro.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.rs-latin.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.rs.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.ru.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.si.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.sk.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.sl.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.sq.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.sr-latin.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.sr.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.sv.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.sw.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.ta.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.tg.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.th.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.tk.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.tr.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.uk.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.uz-cyrl.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.uz-latn.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.vi.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.zh-CN.min.js" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\locales\bootstrap-datepicker.zh-TW.min.js" />
     <Content Include="Content\dist\img\AdminLTELogo.png" />
     <Content Include="Content\dist\img\avatar.png" />
     <Content Include="Content\dist\img\avatar2.png" />
@@ -475,6 +408,47 @@
     <Content Include="Content\plugins\jquery\jquery.min.js" />
     <Content Include="Content\plugins\jquery\jquery.slim.js" />
     <Content Include="Content\plugins\jquery\jquery.slim.min.js" />
+    <Content Include="Content\themes\base\accordion.css" />
+    <Content Include="Content\themes\base\all.css" />
+    <Content Include="Content\themes\base\autocomplete.css" />
+    <Content Include="Content\themes\base\base.css" />
+    <Content Include="Content\themes\base\button.css" />
+    <Content Include="Content\themes\base\core.css" />
+    <Content Include="Content\themes\base\datepicker.css" />
+    <Content Include="Content\themes\base\dialog.css" />
+    <Content Include="Content\themes\base\draggable.css" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_444444_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_555555_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_777620_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_777777_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\menu.css" />
+    <Content Include="Content\themes\base\progressbar.css" />
+    <Content Include="Content\themes\base\resizable.css" />
+    <Content Include="Content\themes\base\selectable.css" />
+    <Content Include="Content\themes\base\selectmenu.css" />
+    <Content Include="Content\themes\base\slider.css" />
+    <Content Include="Content\themes\base\sortable.css" />
+    <Content Include="Content\themes\base\spinner.css" />
+    <Content Include="Content\themes\base\tabs.css" />
+    <Content Include="Content\themes\base\theme.css" />
+    <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -623,16 +597,14 @@
     <Content Include="Content\plugins\fontawesome-free\webfonts\fa-solid-900.woff2" />
     <Content Include="Content\plugins\jquery\jquery.min.map" />
     <Content Include="Content\plugins\jquery\jquery.slim.min.map" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\css\bootstrap-datepicker.css.map" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\css\bootstrap-datepicker.standalone.css.map" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\css\bootstrap-datepicker3.css.map" />
-    <Content Include="Content\dist\datePicker\bootstrap-datepicker-1.9.0-dist\css\bootstrap-datepicker3.standalone.css.map" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -758,10 +730,19 @@
     <Content Include="Views\Manufacture\Create.cshtml" />
     <Content Include="Views\Manufacture\Index.cshtml" />
     <Content Include="Views\Manufacture\Edit.cshtml" />
+    <Content Include="Views\Vehicles\Edit.cshtml" />
+    <Content Include="Views\Driver\Create.cshtml" />
+    <Content Include="Views\Appointment\Create.cshtml" />
+    <Content Include="Views\Appointment\Index.cshtml" />
+    <Content Include="Views\Driver\Index.cshtml" />
+    <Content Include="Views\Assigning\AssigningtoDriver.cshtml" />
+    <Content Include="Views\VehicleType\Create.cshtml" />
+    <Content Include="Views\Owner\Create.cshtml" />
+    <Content Include="Views\Owner\Index.cshtml" />
+    <Content Include="Views\Assigning\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Owner\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -792,6 +773,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202104010751326_newclStatus.resx">
       <DependentUpon>202104010751326_newclStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104060635173_addfueltypetb.resx">
+      <DependentUpon>202104060635173_addfueltypetb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104061953321_updatetb.resx">
+      <DependentUpon>202104061953321_updatetb.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

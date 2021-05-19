@@ -1,4 +1,5 @@
-﻿using DocumentFormat.OpenXml.InkML;
+﻿using AutoMapper;
+using DocumentFormat.OpenXml.InkML;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -9,6 +10,7 @@ using System.Web;
 using System.Web.Mvc;
 using VDMS.DataRepository;
 using VDMS.Models;
+using VDMS.ViewModel;
 
 namespace VDMS.Controllers
 {
@@ -46,62 +48,55 @@ namespace VDMS.Controllers
             return View(viewmodel);
         }
 
-        // post: vehicles/create
-        // to protect from overposting attacks, enable the specific properties you want to bind to, for 
+        //post: vehicles/create
+        //to protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?linkid=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult create([Bind(Include = "id,vehicleno,typeid,engineno,chassino,color,seatingcapacity,dataoffirstreg,cylindercapacity,manufacturedyear,manufactureid,ownerid")] Vehicledto vehicle)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        db.vehicles.add(vehicle);
-        //        db.savechanges();
-        //        return RedirectToAction("index");
-        //    }
-
-        //    ViewBag.manufactureid = new SelectList(db.manufactures, "id", "name", vehicle.ManufactureId);
-        //    ViewBag.ownerid = new SelectList(db.owners, "id", "name", vehicle.OwnerId);
-        //    ViewBag.typeid = new SelectList(db.vtypes, "id", "name", vehicle.TypeId);
-        //    return View(vehicle);
-        //}
+        [HttpPost]        
+        public ActionResult Create(VehicleViewModel vehicle)
+        {
+            if (ModelState.IsValid)
+            { 
+                var v = _vrepo.Save(Mapper.Map<VehicleViewModel, Vehicle>(vehicle));
+                if (v.Id!=0)
+                {
+                    return RedirectToAction("index");
+                }
+                
+            }
+            
+            return RedirectToAction("Create");
+        }
 
         //// GET: Vehicles/Edit/5
-        //public ActionResult Edit(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    Vehicle vehicle = db.Vehicles.Find(id);
-        //    if (vehicle == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    ViewBag.ManufactureId = new SelectList(db.Manufactures, "Id", "Name", vehicle.ManufactureId);
-        //    ViewBag.OwnerId = new SelectList(db.Owners, "Id", "Name", vehicle.OwnerId);
-        //    ViewBag.TypeId = new SelectList(db.VTypes, "Id", "Name", vehicle.TypeId);
-        //    return View(vehicle);
-        //}
+        public ActionResult Edit(int? id)
+        {
+            int Vid = (int)id;            
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);                
+            }
+            else
+            {
+                return View(_vrepo.GetVehicle(Vid));
+            }            
+           
+        }
 
         //// POST: Vehicles/Edit/5
         //// To protect from overposting attacks, enable the specific properties you want to bind to, for 
         //// more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Edit([Bind(Include = "Id,VehicleNo,TypeId,EngineNo,ChassiNo,Color,SeatingCapacity,DataOfFirstReg,CylinderCapacity,ManufacturedYear,ManufactureId,OwnerId")] Vehicle vehicle)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        db.Entry(vehicle).State = EntityState.Modified;
-        //        db.SaveChanges();
-        //        return RedirectToAction("Index");
-        //    }
-        //    ViewBag.ManufactureId = new SelectList(db.Manufactures, "Id", "Name", vehicle.ManufactureId);
-        //    ViewBag.OwnerId = new SelectList(db.Owners, "Id", "Name", vehicle.OwnerId);
-        //    ViewBag.TypeId = new SelectList(db.VTypes, "Id", "Name", vehicle.TypeId);
-        //    return View(vehicle);
-        //}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(VehicleViewModel vehicle)
+        {
+            if (ModelState.IsValid)
+            {
+                _vrepo.Edit(vehicle);
+                return RedirectToAction("Index");
+            }
+            
+            return RedirectToAction("Edit", new { id = vehicle.Id});
+        }
 
         //// GET: Vehicles/Delete/5
         //public ActionResult Delete(int? id)
