@@ -8,6 +8,11 @@ namespace VDMS.ViewModel
 {
     public class DriverVehicleRecordViewModel
     {
+        public DriverVehicleRecordViewModel()
+        {
+            vehicleViewModels = new List<VehicleViewModel>();
+            driverViewModels = new List<DriverViewModel>();
+        }
         public int Id { get; set; }
         public DateTime AssignDate { get; set; }
         public DateTime? TerminateDate { get; set; }

@@ -9,8 +9,8 @@ namespace VDMS.Models
     {
         public int Id { get; set; }
         public string CouponNo { get; set; }
-        public DateTime Date  { get; set; }        
-        public int PreviousMeterReading { get; set; }
+        public DateTime Date  { get; set; }    
+      
         public int CurrentMeterReading { get; set; }
         public double Qty { get; set; }
         public double UnitPrice { get; set; }

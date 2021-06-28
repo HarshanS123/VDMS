@@ -16,5 +16,6 @@ namespace VDMS.DataRepository
        VehicleViewModel GetVehicle(int id);
        bool Delete(int id);
        VehicleViewModel View();
+       int VehicaleCount();
     }
 }

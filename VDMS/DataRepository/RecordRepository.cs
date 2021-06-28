@@ -13,6 +13,12 @@ namespace VDMS.DataRepository
     {
         private ApplicationDbContext _dbcontext;
 
+        DriverVehicleRecordViewModel IAssigning.CreatrView()
+        {
+            DriverVehicleRecordViewModel newObj = new DriverVehicleRecordViewModel();
+            return newObj;
+        }
+
         IEnumerable<DriverVehicleRecordViewModel> IAssigning.GetAll()
         {
             using (_dbcontext =  new ApplicationDbContext())

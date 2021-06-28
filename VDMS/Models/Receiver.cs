@@ -10,6 +10,7 @@ namespace VDMS.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public bool Status { get; set; }
-        public ICollection<VehicleAssignedRecord> VehicleAssignedRecords { get; set; }
+        public string Title { get; set; }
+        public ICollection<ReceiverRecord> ReceiverRecords { get; set; }
     }
 }

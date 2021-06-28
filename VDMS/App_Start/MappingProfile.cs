@@ -28,6 +28,22 @@ namespace VDMS.App_Start
             Mapper.CreateMap<AppointmentViewModel, Appointment>();
             Mapper.CreateMap<Driver, DriverViewModel>();
             Mapper.CreateMap<DriverViewModel, Driver>();
+            Mapper.CreateMap<License,LicenseViewModel>();
+            Mapper.CreateMap<LicenseViewModel, License>();
+            Mapper.CreateMap<ServiceCenter, ServiceCenterViewModel>();
+            Mapper.CreateMap<ServiceCenterViewModel, ServiceCenter>();
+            Mapper.CreateMap<ServiceRecordViewModel, ServiceRecord>();
+            Mapper.CreateMap<ServiceRecord, ServiceRecordViewModel>();
+            Mapper.CreateMap<FuelRecord, FuelRecordViewModel>();
+            Mapper.CreateMap<FuelRecordViewModel, FuelRecord>();
+            Mapper.CreateMap<Receiver, ReceiverViewModel>();
+            Mapper.CreateMap<ReceiverViewModel, Receiver>();
+            Mapper.CreateMap<ReceiverRecordViewModel, ReceiverRecord>();
+            Mapper.CreateMap<ReceiverRecord, ReceiverRecordViewModel>();
+            Mapper.CreateMap<Insurance, InsuranceViewModel>();
+            Mapper.CreateMap<InsuranceViewModel, Insurance>();
+            Mapper.CreateMap<IncuranceCompany, IncuranceCompanyViewModel>();
+            Mapper.CreateMap<IncuranceCompanyViewModel,IncuranceCompany>();
         }
         
     }

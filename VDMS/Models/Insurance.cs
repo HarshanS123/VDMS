@@ -14,8 +14,8 @@ namespace VDMS.Models
         public int VehicleId { get; set; }
         public bool Status { get; set; }
         public Vehicle Vehicle { get; set; }
-        public IncuranceCompany IncuranceCompanyId { get; set; }
-        public IncuranceCompany IncuranceCompany { get; set;}
+        public int IncuranceCompanyId { get; set; }
+        public IncuranceCompany IncuranceCompany { get; set; }
 
         public ICollection<InsuranceClaim> InsuranceClaims { get; set; }
     }

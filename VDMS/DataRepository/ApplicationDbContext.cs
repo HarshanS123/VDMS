@@ -28,6 +28,8 @@ namespace VDMS.DataRepository
         public DbSet<VehicleAssignedRecord> VehicleAssignedRecords { get; set; }
         public DbSet<VType> VTypes { get; set; }
         public DbSet<FuelType> FuelTypes { get; set; }
+        public DbSet<License> License { get; set; }
+        public DbSet<ReceiverRecord> ReceiverRecords { get; set; }
 
 
         public ApplicationDbContext()
@@ -42,5 +44,6 @@ namespace VDMS.DataRepository
             return new ApplicationDbContext();
         }
 
+       
     }
 }

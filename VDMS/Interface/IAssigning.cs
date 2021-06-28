@@ -13,5 +13,7 @@ namespace VDMS.Interface
         IEnumerable<DriverVehicleRecordViewModel> GetAll();
 
         bool Save(DriverVehicleRecord record);
+
+        DriverVehicleRecordViewModel CreatrView();
     }
 }

@@ -128,5 +128,14 @@ namespace VDMS.DataRepository
 
         }
 
+        int IVehicaleRepository.VehicaleCount()
+        {
+            using (_dbcontext = new ApplicationDbContext())
+            {
+                var vehicleInDb = _dbcontext.Vehicles.ToList();                
+
+                return vehicleInDb.Count;
+            }
+        }
     }
 }

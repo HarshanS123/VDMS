@@ -12,20 +12,18 @@ namespace VDMS.Controllers
 {
     public class AssigningController : Controller
     {
-        private IVehicaleRepository _vehical;
-        private IDriverRepository _driver;
-        private IAssigning _assigning;
+        private IVehicaleRepository _vehical = new VehicalRepository();
+        private IDriverRepository _driver = new DriverRepository();
+        private IAssigning _assigning = new RecordRepository();
 
         // GET: Assigning
         public ActionResult Index()
         {
-            _driver = new DriverRepository();
+           
             var drivers = _driver.GetAll();
-
-            _vehical = new VehicalRepository();
+          
             var vehicals = _vehical.GetAllVehicle();
-
-            _assigning = new RecordRepository();
+           
             var records = _assigning.GetAll();
 
             records.Where(R => R.TerminateDate == null).ToList();
@@ -46,13 +44,13 @@ namespace VDMS.Controllers
         // GET: Assigning/Create
         public ActionResult AssigningtoDriver()
         {
-            _driver = new DriverRepository();
+
+            var dv = _assigning.CreatrView();
+
            var drivers = _driver.GetAll();
 
-            _vehical = new VehicalRepository();
             var vehicals = _vehical.GetAllVehicle();
 
-            _assigning = new RecordRepository();
             var records =_assigning.GetAll();
 
 
@@ -67,7 +65,7 @@ namespace VDMS.Controllers
                                 VehicalObj = s.vehical
                             });
 
-            DriverVehicleRecordViewModel dv = new DriverVehicleRecordViewModel();
+            
             dv.driverViewModels = drivers;
             
             var ListV = new List<VehicleViewModel>();

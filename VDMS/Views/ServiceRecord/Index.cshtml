@@ -1,0 +1,92 @@
+﻿@model IEnumerable<VDMS.ViewModel.ServiceRecordViewModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row">
+   <div class="col-sm-12">
+       <div class="card">
+              <h5 class="card-header">Vehicles Services Records</h5>
+                 <div class="card-body">
+                     <table class="table" id="vdataTable">
+                         <thead>
+                             <tr>
+                                 <th>
+                                     @Html.DisplayNameFor(model => model.ServiceCenter.Name)
+                                 </th>
+                                 <th>
+                                     @Html.DisplayNameFor(model => model.Vehicle.VehicleNo)
+                                 </th>
+                                 <th>
+                                     @Html.DisplayNameFor(model => model.ServiceNo)
+                                 </th>
+                                 <th>
+                                     @Html.DisplayNameFor(model => model.Date)
+                                 </th>
+                                 <th>
+                                     @Html.DisplayNameFor(model => model.Cost)
+                                 </th>
+                                 <th>
+                                     @Html.DisplayNameFor(model => model.Description)
+                                 </th>
+                                 <th>
+                                     @Html.DisplayNameFor(model => model.Milage)
+                                 </th>
+                                 <th>
+                                     @Html.DisplayNameFor(model => model.Status)
+                                 </th>
+                                 <th></th>
+                             </tr>
+                         </thead>
+                         <tbody>
+                             @foreach (var item in Model)
+                             {
+                                 <tr>
+                                     <td>
+                                         @Html.DisplayFor(modelItem => item.ServiceCenter.Name)
+                                     </td>
+                                     <td>
+                                         @Html.DisplayFor(modelItem => item.Vehicle.VehicleNo)
+                                     </td>
+                                     <td>
+                                         @Html.DisplayFor(modelItem => item.ServiceNo)
+                                     </td>
+                                     <td>
+                                         @Html.DisplayFor(modelItem => item.Date)
+                                     </td>
+                                     <td>
+                                         @Html.DisplayFor(modelItem => item.Cost)
+                                     </td>
+                                     <td>
+                                         @Html.DisplayFor(modelItem => item.Description)
+                                     </td>
+                                     <td>
+                                         @Html.DisplayFor(modelItem => item.Milage)
+                                     </td>
+                                     <td>
+                                         @Html.DisplayFor(modelItem => item.Status)
+                                     </td>
+                                     <td>
+                                         @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-warning" })
+                                         @Html.ActionLink("Details", "Edit", new { id = item.Id }, new { @class = "btn btn-info" })
+                                         @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
+                                     </td>
+                                 </tr>
+                             }
+                         <tbody>
+                     </table>
+                </div>
+       </div>
+   </div>
+ </div>
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $('#vdataTable').DataTable();
+        });
+    </script>
+}
