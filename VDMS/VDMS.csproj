@@ -60,6 +60,9 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MoralesLarios.Linq, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MoralesLarios.Linq.1.0.0\lib\net452\MoralesLarios.Linq.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -187,22 +190,46 @@
     <Compile Include="Controllers\AppointmentController.cs" />
     <Compile Include="Controllers\AssigningController.cs" />
     <Compile Include="Controllers\DriverController.cs" />
+    <Compile Include="Controllers\ReceiverRecordController.cs" />
+    <Compile Include="Controllers\FuelRecordController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InsuranceController.cs" />
+    <Compile Include="Controllers\LicenseController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ManufactureController.cs" />
     <Compile Include="Controllers\OwnerController.cs" />
+    <Compile Include="Controllers\ReceiverController.cs" />
+    <Compile Include="Controllers\ServiceRecordController.cs" />
     <Compile Include="Controllers\VehiclesController.cs" />
     <Compile Include="Controllers\VehicleTypeController.cs" />
     <Compile Include="DataRepository\ApplicationDbContext.cs" />
     <Compile Include="DataRepository\AppointmentRepository.cs" />
     <Compile Include="DataRepository\DriverRepository.cs" />
+    <Compile Include="DataRepository\FuelRecordRepository.cs" />
     <Compile Include="DataRepository\FuelRepository.cs" />
+    <Compile Include="DataRepository\HomeRepository.cs" />
+    <Compile Include="DataRepository\InsuranceCompaniesRepository.cs" />
+    <Compile Include="DataRepository\InsuranceRepository.cs" />
+    <Compile Include="DataRepository\LicenseRepository.cs" />
+    <Compile Include="DataRepository\ReceiverRecordRepository.cs" />
+    <Compile Include="DataRepository\ReceiverRepository.cs" />
     <Compile Include="DataRepository\RecordRepository.cs" />
+    <Compile Include="DataRepository\ServiceCenterRepository.cs" />
+    <Compile Include="DataRepository\ServiceRecordRepository.cs" />
     <Compile Include="Interface\IAssigning.cs" />
     <Compile Include="Interface\IDriverRepository.cs" />
     <Compile Include="Interface\IFuel.cs" />
+    <Compile Include="Interface\IFuelRecords.cs" />
+    <Compile Include="Interface\IHomeRepository.cs" />
+    <Compile Include="Interface\IInsuranceCompanies.cs" />
+    <Compile Include="Interface\IInsuranceRepository.cs" />
+    <Compile Include="Interface\ILicense.cs" />
     <Compile Include="Interface\IManufacturesRepository.cs" />
     <Compile Include="Interface\IOwnerRepository.cs" />
+    <Compile Include="Interface\IReceiver.cs" />
+    <Compile Include="Interface\IReceiverRecord.cs" />
+    <Compile Include="Interface\IServiceCenter.cs" />
+    <Compile Include="Interface\IServiceRecords.cs" />
     <Compile Include="Interface\IVehicaleRepository.cs" />
     <Compile Include="Interface\IVTypes.cs" />
     <Compile Include="DataRepository\ManufacturesRepository.cs" />
@@ -226,14 +253,49 @@
     <Compile Include="Migrations\202104061953321_updatetb.Designer.cs">
       <DependentUpon>202104061953321_updatetb.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202105271330124_Licens.cs" />
+    <Compile Include="Migrations\202105271330124_Licens.Designer.cs">
+      <DependentUpon>202105271330124_Licens.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202106131223094_Insurancesetting.cs" />
+    <Compile Include="Migrations\202106131223094_Insurancesetting.Designer.cs">
+      <DependentUpon>202106131223094_Insurancesetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202106131228263_connectionaddedtoinsu.cs" />
+    <Compile Include="Migrations\202106131228263_connectionaddedtoinsu.Designer.cs">
+      <DependentUpon>202106131228263_connectionaddedtoinsu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202106160634250_ServiceTbdata.cs" />
+    <Compile Include="Migrations\202106160634250_ServiceTbdata.Designer.cs">
+      <DependentUpon>202106160634250_ServiceTbdata.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202106160721588_ResTb.cs" />
+    <Compile Include="Migrations\202106160721588_ResTb.Designer.cs">
+      <DependentUpon>202106160721588_ResTb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202106160910043_ResTbwitVehical.cs" />
+    <Compile Include="Migrations\202106160910043_ResTbwitVehical.Designer.cs">
+      <DependentUpon>202106160910043_ResTbwitVehical.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\FuelType.cs" />
+    <Compile Include="Models\License.cs" />
+    <Compile Include="Models\ReceiverRecord.cs" />
     <Compile Include="ViewModel\AppointmentViewModel.cs" />
     <Compile Include="ViewModel\CountryViewModel.cs" />
     <Compile Include="ViewModel\DriverVehicleRecordViewModel.cs" />
     <Compile Include="ViewModel\DriverViewModel.cs" />
+    <Compile Include="ViewModel\FuelRecordViewModel.cs" />
     <Compile Include="ViewModel\FuelTypeViewModel.cs" />
+    <Compile Include="ViewModel\HomeViewModel.cs" />
+    <Compile Include="ViewModel\IncuranceCompanyViewModel.cs" />
+    <Compile Include="ViewModel\InsuranceViewModel.cs" />
+    <Compile Include="ViewModel\LicenseViewModel.cs" />
     <Compile Include="ViewModel\OwenrViewModel.cs" />
     <Compile Include="ViewModel\ManufactureViewModel.cs" />
+    <Compile Include="ViewModel\ReceiverRecordViewModel.cs" />
+    <Compile Include="ViewModel\ReceiverViewModel.cs" />
+    <Compile Include="ViewModel\ServiceCenterViewModel.cs" />
+    <Compile Include="ViewModel\ServiceRecordViewModel.cs" />
     <Compile Include="ViewModel\VehicleViewModel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -740,6 +802,21 @@
     <Content Include="Views\Owner\Create.cshtml" />
     <Content Include="Views\Owner\Index.cshtml" />
     <Content Include="Views\Assigning\Index.cshtml" />
+    <Content Include="Views\Insurance\Create.cshtml" />
+    <Content Include="Views\Insurance\Index.cshtml" />
+    <Content Include="Views\License\Create.cshtml" />
+    <Content Include="Views\License\Index.cshtml" />
+    <Content Include="Views\FuelRecord\Create.cshtml" />
+    <Content Include="Views\ServiceRecord\Create.cshtml" />
+    <Content Include="Views\ServiceRecord\Index.cshtml" />
+    <Content Include="Views\Receiver\Create.cshtml" />
+    <Content Include="Views\Receiver\Index.cshtml" />
+    <Content Include="Views\ReceiverRecord\Index.cshtml" />
+    <Content Include="Views\ReceiverRecord\Create.cshtml" />
+    <Content Include="Views\FuelRecord\Index.cshtml" />
+    <Content Include="Views\VehicleType\Index.cshtml" />
+    <Content Include="Views\ReceiverRecord\Terminate.cshtml" />
+    <Content Include="Views\Vehicles\Pool.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -779,6 +856,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202104061953321_updatetb.resx">
       <DependentUpon>202104061953321_updatetb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105271330124_Licens.resx">
+      <DependentUpon>202105271330124_Licens.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106131223094_Insurancesetting.resx">
+      <DependentUpon>202106131223094_Insurancesetting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106131228263_connectionaddedtoinsu.resx">
+      <DependentUpon>202106131228263_connectionaddedtoinsu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106160634250_ServiceTbdata.resx">
+      <DependentUpon>202106160634250_ServiceTbdata.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106160721588_ResTb.resx">
+      <DependentUpon>202106160721588_ResTb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106160910043_ResTbwitVehical.resx">
+      <DependentUpon>202106160910043_ResTbwitVehical.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

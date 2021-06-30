@@ -61,7 +61,7 @@
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Owner.Name)
                                 </td>
-                                <td>
+                                <td style="width:20%;">
                                     @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-warning" })
                                     @Html.ActionLink("Details", "Edit", new { id = item.Id }, new { @class = "btn btn-info" })
                                     @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })

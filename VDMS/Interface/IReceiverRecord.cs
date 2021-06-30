@@ -15,5 +15,9 @@ namespace VDMS.Interface
         bool Save(ReceiverRecord record);
 
         ReceiverRecordViewModel CreatrView();
+
+        ReceiverRecordViewModel EditCreatrView(int id);
+
+        bool Terminate(int id, ReceiverRecord record);
     }
 }

@@ -1,20 +1,19 @@
-﻿@model IEnumerable<VDMS.ViewModel.AppointmentViewModel>
+﻿@model IEnumerable<VDMS.ViewModel.VTypeViewModel>
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
 <div class="row">
     <div class="col-sm-8">
         <div class="card">
-            <h5 class="card-header">Drivers Appointments</h5>
+            <h5 class="card-header">Vehicle Types</h5>
             <div class="card-body">
-                <table class="table table-striped" id="appoiments">
+                <table class="table table-striped" id="vtypeTb">
                     <tr>
                         <th>
-                            @Html.DisplayNameFor(model => model.AppointmentName)
+                            @Html.DisplayNameFor(model => model.Name)
                         </th>
                         <th></th>
                     </tr>
@@ -23,7 +22,7 @@
                     {
                         <tr>
                             <td>
-                                @Html.DisplayFor(modelItem => item.AppointmentName)
+                                @Html.DisplayFor(modelItem => item.Name)
                             </td>
                             <td>
                                 @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-warning" })

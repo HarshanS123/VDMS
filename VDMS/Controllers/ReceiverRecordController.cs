@@ -96,5 +96,33 @@ namespace VDMS.Controllers
                 return View();
             }
         }
+
+        // GET: ReceiverRecord/Terminate/5
+        public ActionResult Terminate(int id)
+        {
+            var reciverR = _receiverRecord.EditCreatrView(id);
+           
+            return View(reciverR);
+        }
+
+        // POST: ReceiverRecord/Terminate/5
+        [HttpPost]
+        public ActionResult Terminate(int id, ReceiverRecordViewModel receiverRecordViewModel)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var record = Mapper.Map<ReceiverRecordViewModel, ReceiverRecord>(receiverRecordViewModel);
+                    _receiverRecord.Terminate(id, record);
+                }
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
     }
 }

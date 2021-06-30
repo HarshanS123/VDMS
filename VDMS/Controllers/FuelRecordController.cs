@@ -17,7 +17,8 @@ namespace VDMS.Controllers
         // GET: FuelRecord
         public ActionResult Index()
         {
-            return View();
+            var flR = _frepo.GetAll();
+            return View(flR);
         }
 
         // GET: FuelRecord/Details/5

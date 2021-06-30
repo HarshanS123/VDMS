@@ -14,7 +14,8 @@ namespace VDMS.Controllers
         // GET: VehicleType
         public ActionResult Index()
         {
-            return View();
+            var types = _type.GetAll();
+            return View(types);
         }
 
         // GET: VehicleType/Details/5

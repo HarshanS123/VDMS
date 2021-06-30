@@ -5,19 +5,19 @@ using System.ServiceProcess;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MailSender
+namespace MailService
 {
     static class Program
     {
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
-        static void Main()
+        static void Main(string[] args)
         {
             ServiceBase[] ServicesToRun;
             ServicesToRun = new ServiceBase[]
             {
-                new MailService()
+                new MailSender(args)
             };
             ServiceBase.Run(ServicesToRun);
         }

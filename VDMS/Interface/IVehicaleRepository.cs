@@ -13,6 +13,7 @@ namespace VDMS.DataRepository
        Vehicle Save(Vehicle vehicle);
        bool Edit(VehicleViewModel vehicle);
        IEnumerable<VehicleViewModel> GetAllVehicle();
+       IEnumerable<VehicleViewModel> GetAllPoolVehicle();
        VehicleViewModel GetVehicle(int id);
        bool Delete(int id);
        VehicleViewModel View();

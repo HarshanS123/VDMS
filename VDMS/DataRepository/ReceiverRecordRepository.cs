@@ -27,11 +27,28 @@ namespace VDMS.DataRepository
 
         }
 
+        ReceiverRecordViewModel IReceiverRecord.EditCreatrView(int id)
+        {            
+            
+            using (_dbcontext = new ApplicationDbContext())
+            {
+                var obj = _dbcontext.ReceiverRecords.Where(r => r.Id == id).Include(v => v.Vehicle).Include(r => r.Receiver).FirstOrDefault();
+                var recRecord = Mapper.Map<ReceiverRecord, ReceiverRecordViewModel>(obj);
+                var vehical = _vehicale.GetAllVehicle();
+                var reciver = _receiver.GetAll();
+                recRecord.Vehicles = vehical;
+                recRecord.Receivers = reciver;                
+                return recRecord;
+            }
+            
+
+        }
+
         IEnumerable<ReceiverRecordViewModel> IReceiverRecord.GetAll()
         {
             using (_dbcontext = new ApplicationDbContext())
             {
-                var res = _dbcontext.ReceiverRecords.Include(v => v.Vehicle).Include(r => r.Receiver).ToList().Select(Mapper.Map<ReceiverRecord, ReceiverRecordViewModel>);
+                var res = _dbcontext.ReceiverRecords.Where(r => r.TerminateDate == null).Include(v => v.Vehicle).Include(r => r.Receiver).ToList().Select(Mapper.Map<ReceiverRecord, ReceiverRecordViewModel>);
                 return res;
             }
         }
@@ -50,5 +67,24 @@ namespace VDMS.DataRepository
 
             }
         }
+
+        bool IReceiverRecord.Terminate(int id, ReceiverRecord record)
+        {
+            var returnVal = false;
+            using (_dbcontext = new ApplicationDbContext())
+            {
+                var dbrecord = _dbcontext.ReceiverRecords.Single(R => R.Id == id);
+                if (dbrecord != null)
+                {
+                    dbrecord.TerminateDate = record.TerminateDate;                    
+                    _dbcontext.SaveChanges();
+                    returnVal = true;
+                }
+
+            }
+
+            return returnVal;
+        }
+        
     }
 }

@@ -26,6 +26,13 @@ namespace VDMS.Controllers
             return View(vehicles);
         }
 
+        // GET: Pool
+        public ActionResult Pool()
+        {
+            var vehicles = _vrepo.GetAllPoolVehicle();
+            return View(vehicles);
+        }
+
         //// GET: Vehicles/Details/5
         //public ActionResult Details(int? id)
         //{

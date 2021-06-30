@@ -5,6 +5,9 @@ using System.Web;
 using VDMS.Interface;
 using VDMS.Models;
 using VDMS.ViewModel;
+using System.Linq;
+using System.Data.Entity;
+using AutoMapper;
 
 namespace VDMS.DataRepository
 {
@@ -37,7 +40,12 @@ namespace VDMS.DataRepository
 
         IEnumerable<FuelRecordViewModel> IFuelRecords.GetAll()
         {
-            throw new NotImplementedException();
+            using (_dbcontext = new ApplicationDbContext())
+            {
+                var fuelRecords = _dbcontext.FuelRecords.Include(F => F.Vehicle.FuelType).ToList().Select(Mapper.Map<FuelRecord, FuelRecordViewModel>);
+                return fuelRecords;
+                
+            }
         }
 
         bool IFuelRecords.Save(FuelRecord fuelRecord)

@@ -1,0 +1,93 @@
+﻿@model IEnumerable<VDMS.ViewModel.FuelRecordViewModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <h5 class="card-header">Vehicles</h5>
+            <div class="card-body">
+                <table class="table" id="fdataTable">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Vehicle.VehicleNo)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Vehicle.FuelType.Name)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.CouponNo)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Date)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.CurrentMeterReading)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Qty)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.UnitPrice)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Status)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Vehicle.VehicleNo)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Vehicle.FuelType.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CouponNo)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Date)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CurrentMeterReading)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Qty)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UnitPrice)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Status)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-warning" })
+                                @Html.ActionLink("Details", "Edit", new { id = item.Id }, new { @class = "btn btn-info" })
+                                @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
+                            </td>
+                        </tr>
+                    }
+
+                    <tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $('#fdataTable').DataTable();
+        });
+    </script>
+}

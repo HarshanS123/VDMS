@@ -1,0 +1,88 @@
+﻿@model VDMS.ViewModel.ReceiverRecordViewModel
+
+@{
+    ViewBag.Title = "Terminate";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card">
+                <h5 class="card-header">Vehical Assing to Pool</h5>
+                <div class="card-body">
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.Id)
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ReceiverId, "Receiver Name", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(model => model.ReceiverId, new SelectList(Model.Receivers, "Id", "Name"), "", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.ReceiverId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.VehicleId, "VehicleId", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(model => model.VehicleId, new SelectList(Model.Vehicles, "Id", "VehicleNo"), "", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.VehicleId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.AssingData, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.AssingData, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.AssingData, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.TerminateDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.TerminateDate, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.TerminateDate, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Save" class="btn btn-warning" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@section Scripts {
+
+    @Scripts.Render("~/bundles/jqueryui")
+    @Styles.Render("~/Content/cssjqryUi")
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('input[type=datetime]').datepicker({
+                dateFormat: "dd/M/yy",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "-60:+0",
+                hideIfNoPrevNext: true,
+
+            });
+
+            $('#AssingData').datepicker("disable");
+            $('#ReceiverId').prop('disabled', 'disabled');
+            $('#VehicleId').prop('disabled', 'disabled');
+        });
+    </script>
+
+}
+
+

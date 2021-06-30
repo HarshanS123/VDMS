@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - VDMS</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     @Styles.Render("~/Content/plugins/fontawesome-free/css/all.min.css")
     @Styles.Render("~/Content/dist/css/adminlte.min.css")
@@ -105,7 +105,7 @@
                         <!-- Add icons to the links using the .nav-icon class
     with font-awesome or any other icon font library -->
                         <li class="nav-item menu-open">
-                            <a href="index.html" class="nav-link active">
+                            <a href="/home" class="nav-link active">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
                                     Dashboard
@@ -157,7 +157,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="@Url.Action("Index", "Vehicles")" class="nav-link">
+                                    <a href="@Url.Action("Pool", "Vehicles")" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Show Pool</p>
                                     </a>
@@ -166,6 +166,12 @@
                                     <a href="@Url.Action("Create", "ReceiverRecord")" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Assing Vehical to User</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="@Url.Action("Index", "ReceiverRecord")" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>View Vehical and Users</p>
                                     </a>
                                 </li>
 
